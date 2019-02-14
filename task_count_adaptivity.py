@@ -7,12 +7,26 @@ import os, sys
 if os.environ.get('RADICAL_ENTK_VERBOSE') == None:
     os.environ['RADICAL_ENTK_REPORT'] = 'True'
 
+# Assumptions:
+# - Each MD step runs for ~2h
+# - Overheads+other workflow steps 0.5h
+# - <= 300 concurrent tasks
+# - Summit's scheduling policy [1]
+#
+# Resource rquest:
+# - 46 <= nodes < 92 with 6h walltime.
+#
+# Workflow [2]:
+# - 46 <= pipelines < 91
+# - 2*45 <= Docking/MD stages < 2*90 (2 * (45 concurrent 2 hours-long stages)
+#   limited by 6h walltime)
+#
+# [1] https://www.olcf.ornl.gov/for-users/system-user-guides/summit/summit-user-guide/#scheduling-policy
+# [2] https://docs.google.com/drawings/d/1vxudWZtKrF6-O_eGLuQkmzMC9T8HbEJCpYbRFZ3ipnw/
 
-# from the 800 compounds we can approximate that 500 new stages 
-# need to be created
 
 CUR_NEW_STAGE = 0
-MAX_NEW_STAGE = 500
+MAX_NEW_STAGE = 90
 
 def generate_MD_pipeline():
 
@@ -34,11 +48,11 @@ def generate_MD_pipeline():
         s = Stage()
 
         # each Task() is an OpenMM executable that will run on a single GPU
-        # Given limitation on Summit, we can only execute 4 pipelines 
-        # The Head Pipeline will consist of 1 Stage, 2 Tasks: Generator and ML/AL 
-        # The remaining 3 Pipelines will be devoted to executing simulations 
-        # Each simulation Pipeline can execute up-to 6 OpenMM executables 
-        
+        # Given limitation on Summit, we can only execute 4 pipelines
+        # The Head Pipeline will consist of 1 Stage, 2 Tasks: Generator and ML/AL
+        # The remaining 3 Pipelines will be devoted to executing simulations
+        # Each simulation Pipeline can execute up-to 6 OpenMM executables
+
         for i in range(6):
             t = Task()
             t.executable = ['sleep']
@@ -134,7 +148,7 @@ if __name__ == '__main__':
 
     pipelines = []
     pipelines.append(p1)
-    pipelines.append(p2) 
+    pipelines.append(p2)
 
     # Assign the workflow as a list of Pipelines to the Application Manager
     appman.workflow = pipelines
