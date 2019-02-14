@@ -111,11 +111,13 @@ def generate_ML_pipeline():
     # Task 1 : Generator, Task 2: ConvNet/Active Learning Model
 
     t1 = Task()
+    t1.name = "generator"
     t1.executable = ['sleep']
     t1.arguments = ['30']
     s1.add_tasks(t1)
 
     t2 = Task()
+    t2.name = "ml-al"
     t2.executable = ['sleep']
     t2.arguments = ['30']
     s1.add_tasks(t2)
