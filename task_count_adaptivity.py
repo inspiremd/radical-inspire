@@ -137,7 +137,7 @@ if __name__ == '__main__':
     pipelines.append(p2) 
 
     # Assign the workflow as a list of Pipelines to the Application Manager
-    appman.workflow = [pipelines]
+    appman.workflow = pipelines
 
     # Run the Application Manager
     appman.run()
