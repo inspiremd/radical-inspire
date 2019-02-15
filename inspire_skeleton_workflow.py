@@ -33,7 +33,7 @@ if os.environ.get('RADICAL_ENTK_VERBOSE') is None:
 
 
 CUR_NEW_STAGE = 0
-#MAX_NEW_STAGE = 90
+# MAX_NEW_STAGE = 90
 
 # For local testing
 MAX_NEW_STAGE = 3
