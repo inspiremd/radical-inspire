@@ -43,9 +43,11 @@ def generate_MD_pipeline():
 
     def describe_MD_pipline():
         p = Pipeline()
+        p.name = 'MD'
 
         # Docking stage
         s1 = Stage()
+        s1.name = 'Docking'
 
         # Docking task
         t1 = Task()
@@ -60,6 +62,7 @@ def generate_MD_pipeline():
 
         # MD stage
         s2 = Stage()
+        s2.name = 'Simulation'
 
         # Each Task() is an OpenMM executable that will run on a single GPU.
         # Set sleep time for local testing
@@ -121,9 +124,11 @@ def generate_ML_pipeline():
 
     # Create a Pipeline object
     p = Pipeline()
+    p.name = 'ML'
 
     # Create a Stage object
     s1 = Stage()
+    s1.name = 'Generator-ML'
 
     # the generator/ML Pipeline will consist of 1 Stage, 2 Tasks Task 1 :
     # Generator; Task 2: ConvNet/Active Learning Model
