@@ -171,9 +171,12 @@ if __name__ == '__main__':
     # resource is 'local.localhost' to execute locally
     res_dict = {
 
-            'resource': 'local.localhost',
-            'walltime': 15,
-            'cpus': 2,
+            'resource' : 'local.summit',
+            'queue'    : 'batch',
+            'schema'   : 'local',
+            'walltime' : 15,
+            'cpus'     : 48,
+            'gpus'     : 4
     }
 
     # Create Application Manager
