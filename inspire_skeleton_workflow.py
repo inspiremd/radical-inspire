@@ -138,14 +138,24 @@ def generate_ML_pipeline():
 
     t1 = Task()
     t1.name = "generator"
-    t1.executable = ['sleep']
-    t1.arguments = ['600']
+    t1.pre_exec = []
+    t1.pre_exec += ['module load python/2.7.15-anaconda2-5.3.0']
+    t1.pre_exec += ['module load cuda/9.1.85'] 
+    t1.pre_exec += ['module load gcc/6.4.0']
+    t1.pre_exec += ['source activate snakes']
+    t1.executable = ['python']
+    t1.arguments = ['/ccs/home/jdakka/tf.py']
     s1.add_tasks(t1)
 
     t2 = Task()
     t2.name = "ml-al"
-    t2.executable = ['sleep']
-    t2.arguments = ['600']
+    t2.pre_exec = []
+    t2.pre_exec += ['module load python/2.7.15-anaconda2-5.3.0']
+    t2.pre_exec += ['module load cuda/9.1.85'] 
+    t2.pre_exec += ['module load gcc/6.4.0']
+    t2.pre_exec += ['source activate snakes']
+    t2.executable = ['python']
+    t2.arguments = ['/ccs/home/jdakka/tf.py']
     s1.add_tasks(t2)
 
     # Add Stage to the Pipeline
