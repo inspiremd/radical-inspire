@@ -5,9 +5,10 @@
     * module load cuda/9.1.85
     * module load gcc/6.4.0
 
-* conda create --name <venv>
-* conda install tensorflow-gpu=1.2.1=py27cuda8.0cudnn6.0_0
-* touch device.cu
+* `conda create --name <venv>`
+* `conda activate` or `source activate <venv>`
+* `conda install tensorflow-gpu=1.2.1=py27cuda8.0cudnn6.0_0`
+* `touch device.cu`
 ```#include <stdio.h>
 
 int main() {
@@ -28,11 +29,11 @@ int main() {
   }
 }
 ```
-* nvcc -o device device.cu
+* Run: `nvcc -o device device.cu`
 
 ### Test benchmark:
 
-* touch tf.py 
+* `touch tf.py` 
 
 ```
 import tensorflow as tf
