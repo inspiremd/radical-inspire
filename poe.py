@@ -28,7 +28,7 @@ def generate_pipeline():
     # Create a Task object which creates a file named 'output.txt' of size 1 MB
     t1 = Task()
     t1.name = 't1'
-    t1.executable = ['/bin/sleep']
+    t1.executable = '/bin/sleep'
     t1.arguments = ['5']
     # t1.arguments = ['-l', '-c', 'base64 /dev/urandom | head -c 1000000 > output.txt']
 
@@ -48,7 +48,7 @@ def generate_pipeline():
         # Create a Task object
         t2 = Task()
         t2.name = 't%s' % (cnt + 1)
-        t2.executable = ['/bin/sleep']
+        t2.executable = '/bin/sleep'
         # t2.arguments = ['-l', '-c', 'grep -o . output.txt | sort | uniq -c > ccount.txt']
         t2.arguments= ['5']
 	# Copy data from the task in the first stage to the current task's location
@@ -70,7 +70,7 @@ def generate_pipeline():
         # Create a Task object
         t3 = Task()
         t3.name = 't%s' % (cnt + 1)
-        t3.executable = ['/bin/sleep']
+        t3.executable = '/bin/sleep'
 	t2.arguments = ['5']
         # t3.arguments = ['-l', '-c', 'sha1sum ccount.txt > chksum.txt']
         # Copy data from the task in the first stage to the current task's location
