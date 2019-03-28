@@ -33,6 +33,7 @@ int main() {
 
 ### Test benchmark:
 
+* `export CUDA_VISIBLE_DEVICES=0,1,2,3` 
 * `touch tf.py` 
 
 ```
