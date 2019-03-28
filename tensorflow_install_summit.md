@@ -9,8 +9,8 @@
 * `conda activate` or `source activate <venv>`
 * `conda install tensorflow-gpu=1.2.1=py27cuda8.0cudnn6.0_0`
 * `touch device.cu`
-```#include <stdio.h>
-
+```
+#include <stdio.h>
 int main() {
   int nDevices;
 
