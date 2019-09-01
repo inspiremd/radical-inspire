@@ -4,7 +4,7 @@ export USERNAME="`whoami`"
 export EDITOR="emacs -nw"
 
 # Summit
-module add cuda/9.2.148 spectrum-mpi/10.3.0.1-20190611
+module add cuda/10.1.168 spectrum-mpi/10.3.0.1-20190611
 
 # Envs
 export PROJECT="bip179"
