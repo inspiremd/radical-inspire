@@ -57,6 +57,30 @@ def describe_MD_pipline(t2_senv):
     return p
 
 
+def describe_ML_pipline():
+    p = Pipeline()
+    p.name = 'ML'
+
+    # Learning stage
+    s1 = Stage()
+    s1.name = 'learning'
+
+    # Docking rescroring task
+    t1 = Task()
+    # t2.pre_exec = t2_senv
+    # t2.executable = ['python']
+    # t2.arguments = ['1_mmgbsa.py', '-p', '"test"', '-n', '0']
+    t1.executable = ['/gpfs/alpine/scratch/mturilli1/bip179/bin/run_learner_wrapper.sh']
+
+    # Add the docking rescroring task to the docking rescroring stage
+    s1.add_tasks(t1)
+
+    # Add the docking rescroring stage to the pipeline
+    p.add_stages(s1)
+
+    return p
+
+
 if __name__ == '__main__':
 
     # Project scratch directory
@@ -84,11 +108,12 @@ if __name__ == '__main__':
     appman = AppManager(hostname=hostname, port=int(port))
     appman.resource_desc = res_dict
 
-    p = describe_MD_pipline(t2_senv)
+    p_md = describe_MD_pipline(t2_senv)
+    p_ml = describe_ML_pipline()
 
     # Assign the workflow as a list of Pipelines to the Application Manager. In
     # this way, all the pipelines in the list will execute concurrently.
-    appman.workflow = [p]
+    appman.workflow = [p_md, p_ml]
 
     # Run the Application Manager
     appman.run()
