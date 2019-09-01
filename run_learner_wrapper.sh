@@ -35,4 +35,4 @@ conda activate ml
 
 # Run  Note: this codes need to be run from the root of a clone 
 # of https://github.com/inspiremd/Model-generation
-python ${MEMBER_WORK}/Model-generation/1_mmgbsa.py -p "${MEMBER_WORK}/data/test" -n 0
+python ${MEMBER_WORK}/molecular-active-learning/run_learner.py -f -o ${MEMBER_WORK}/molecular-active-learning/tmp/ --data_path ${MEMBER_WORK}/molecular-active-learning/tmp/fake_data/ --smiles_file ${MEMBER_WORK}/molecular-active-learning/sample_input.csv
