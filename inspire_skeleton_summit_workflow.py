@@ -15,7 +15,7 @@ if os.environ.get('RADICAL_ENTK_VERBOSE') is None:
 #    2. Rescoring of docking
 
 
-def describe_MD_pipline():
+def describe_MD_pipline(t2_senv):
     p = Pipeline()
     p.name = 'MD'
 
@@ -40,8 +40,10 @@ def describe_MD_pipline():
 
     # Docking rescroring task
     t2 = Task()
-    t2.executable = ['sleep']
-    t2.arguments = ['60']
+    # t2.pre_exec = t2_senv
+    # t2.executable = ['python']
+    # t2.arguments = ['1_mmgbsa.py', '-p', '"test"', '-n', '0']
+    t2.executable = ['mmgbsa_wrapper.sh']
 
     # Add the docking rescroring task to the docking rescroring stage
     s2.add_tasks(t2)
@@ -53,6 +55,12 @@ def describe_MD_pipline():
 
 
 if __name__ == '__main__':
+
+    # Project scratch directory
+    pdir = '/gpfs/alpine/scratch/mturilli1/bip179/'
+
+    # Execution environemt for task t2 1_mmgbsa.py
+    t2_senv = ['source %s/bin/setup.sh' % pdir]
 
     # Create a dictionary to describe four mandatory keys:
     # resource, walltime, cores and project
@@ -71,7 +79,7 @@ if __name__ == '__main__':
     appman = AppManager()
     appman.resource_desc = res_dict
 
-    p = describe_MD_pipline()
+    p = describe_MD_pipline(t2_senv)
 
     # Assign the workflow as a list of Pipelines to the Application Manager. In
     # this way, all the pipelines in the list will execute concurrently.
