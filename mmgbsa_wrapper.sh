@@ -1,3 +1,5 @@
+#!/bin/bash
+
 unset PYTHONPATH
 
 export USERNAME="`whoami`"
