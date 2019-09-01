@@ -67,11 +67,11 @@ if __name__ == '__main__':
     # resource is 'local.localhost' to execute locally
     res_dict = {
 
-            'resource' : 'local.summit',
+            'resource' : 'ornl.summit_prte',
             'queue'    : 'batch',
             'schema'   : 'local',
             'walltime' : 15,
-            'cpus'     : 48,
+            'cpus'     : 40,
             'gpus'     : 4
     }
 
