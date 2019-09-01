@@ -31,5 +31,6 @@ unset __conda_setup
 # docking and mmgbsa env
 conda activate openmm101
 
-# Run mmgbsa.py
-python ${MEMBER_WORK}/bin/1_mmgbsa.py -p "${MEMBER_WORK}/data/test" -n 0
+# Run mmgbsa.py. Note: this codes need to be run from the root of a clone 
+# of https://github.com/inspiremd/Model-generation
+python ${MEMBER_WORK}/Model-generation/1_mmgbsa.py -p "${MEMBER_WORK}/data/test" -n 0
