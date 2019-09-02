@@ -62,7 +62,7 @@ chmod 777 /gpfs/alpine/scratch/mturilli1/bip179/bin/*.sh
 ```
 
 #### Prepare and execute EnTK
-* IMPORTANT: Before running the script you have to edit the allocation that EnTK will use to submit a pilot job at line 78. 
+* IMPORTANT: Before running the `inspire_skeleton_summit_workflow.py` script you have to edit the allocation that EnTK will use to submit a pilot job at line 78. 
 ```
 . setup_entk.sh
 python inspire_skeleton_summit_workflow.py 
