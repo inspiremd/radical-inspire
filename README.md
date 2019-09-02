@@ -62,7 +62,9 @@ chmod 777 /gpfs/alpine/scratch/mturilli1/bip179/bin/*.sh
 ```
 
 #### Prepare and execute EnTK
-* IMPORTANT: Before running the `inspire_skeleton_summit_workflow.py` script you have to edit the allocation that EnTK will use to submit a pilot job at line 78. 
+* IMPORTANT: Before running the `inspire_skeleton_summit_workflow.py` script you have to edit the allocation that EnTK will use to submit a pilot job at line 78.
+* IMPORTANT: Autotermination of the pilot job on Summit is **not** implemented. This means that if you want to minimize allocation consumption you should manually terminate your batch job once you EnTK script is done. On summit, you can use `bkill <jobid>`.
+
 ```
 . setup_entk.sh
 python inspire_skeleton_summit_workflow.py 
