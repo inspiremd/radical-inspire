@@ -7,7 +7,10 @@ All things RCT
 * Workflow [diagram](https://docs.google.com/drawings/d/1vxudWZtKrF6-O_eGLuQkmzMC9T8HbEJCpYbRFZ3ipnw/edit)
 
 
-### Run Adrian's script in EnTK
+### Concurrently run Adrian and Austin scripts via EnTK on Summit
+It is assumed that:
+* You have a current allocation on Summit
+* You replace the location on the share filesystem in the following examples with your own location.
 
 #### Prepare the virtual environment in which to run EnTK
 
@@ -59,6 +62,7 @@ chmod 777 /gpfs/alpine/scratch/mturilli1/bip179/bin/*.sh
 ```
 
 #### Prepare and execute EnTK
+* IMPORTANT: Before running the script you have to edit the allocation that EnTK will use to submit a pilot job at line 78. 
 ```
 . setup_entk.sh
 python inspire_skeleton_summit_workflow.py 
